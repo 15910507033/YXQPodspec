@@ -54,7 +54,4 @@
 #pragma mark - 文件大小
 + (NSInteger)fileSizeFromPath:(NSString *)path;
 
-#pragma mark - 清理缓存
-+ (void)clearCache;
-
 @end
