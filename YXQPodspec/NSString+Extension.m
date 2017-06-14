@@ -10,7 +10,7 @@
 
 @implementation NSString (Extension)
 
-+ (BOOL)stringIsEmpty:(NSString *)string {
+- (BOOL)stringIsEmpty:(NSString *)string {
     BOOL ret = NO;
     if(string == nil){
         ret = YES;
@@ -23,7 +23,7 @@
     return ret;
 }
 
-+ (BOOL)stringContainsEmoji:(NSString *)string {
+- (BOOL)stringContainsEmoji:(NSString *)string {
     __block BOOL returnValue = NO;
     [string enumerateSubstringsInRange:NSMakeRange(0, [string length]) options:NSStringEnumerationByComposedCharacterSequences usingBlock:
      ^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
@@ -60,7 +60,7 @@
     return returnValue;
 }
 
-+ (NSString *)stringByCleanEmoji {
+- (NSString *)stringByCleanEmoji {
     NSString *regex = @"[^\\u0000-\\uFFFF]|[\\ud83c\\udc00-\\ud83c\\udfff]|[\\ud83d\\udc00-\\ud83d\\udfff]|[\\u2600-\\u27ff]";
     //    NSString *regex = @"/\\uD83C[\\uDF00-\\uDFFF]|\\uD83D[\\uDC00-\\uDE4F]/g";
     NSRegularExpression *regularExpression = [NSRegularExpression regularExpressionWithPattern:regex options:0 error:nil];
