@@ -7,7 +7,7 @@
 //
 
 #import "FileManager.h"
-#import <SDImageCache.h>
+#import <SDWebImage/SDImageCache.h>
 
 static FileManager *sharedInstance = nil;
 
