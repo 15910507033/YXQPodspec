@@ -14,7 +14,7 @@
 
 @implementation UIDevice (Extension)
 
-- (NSString *)KeychainUUID {
++ (NSString *)KeychainUUID {
     NSString *uuid;
     CFUUIDRef puuid = CFUUIDCreate( nil );
     CFStringRef uuidString = CFUUIDCreateString( nil, puuid );
@@ -25,7 +25,7 @@
     return [BXKeychain load:@"ios_uuid"];
 }
 
-- (NSString *)MacAddress {
++ (NSString *)MacAddress {
     NSArray *ifs = CFBridgingRelease(CNCopySupportedInterfaces());
     id info = nil;
     for(NSString *ifname in ifs) {
@@ -41,11 +41,11 @@
     return bssid;
 }
 
-- (NSString *)OpenUDID {
++ (NSString *)OpenUDID {
     return [OpenUDID value];
 }
 
-- (NSString *)IDFA {
++ (NSString *)IDFA {
     NSString *adId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
     return adId;
 }

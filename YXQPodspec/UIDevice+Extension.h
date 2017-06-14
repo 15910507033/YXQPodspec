@@ -10,9 +10,9 @@
 
 @interface UIDevice (Extension)
 
-- (NSString *)KeychainUUID;
-- (NSString *)MacAddress;
-- (NSString *)OpenUDID;
-- (NSString *)IDFA;
++ (NSString *)KeychainUUID;
++ (NSString *)MacAddress;
++ (NSString *)OpenUDID;
++ (NSString *)IDFA;
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation NSDate (Extension)
 
-- (NSString *)currentTimeStringByDateFormat:(NSString *)format {
++ (NSString *)currentTimeStringByDateFormat:(NSString *)format {
     NSDateFormatter* formatter = [[NSDateFormatter alloc] init];
     [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"zh_CN"]];
     [formatter setDateFormat:format];
@@ -19,7 +19,7 @@
     return [formatter stringFromDate:[NSDate date]];
 }
 
-- (NSDate *)dateByTimeString:(NSString *)time DateFormat:(NSString *)format {
++ (NSDate *)dateByTimeString:(NSString *)time DateFormat:(NSString *)format {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"zh_CN"]];
     [formatter setDateFormat:format];
@@ -27,7 +27,7 @@
     return date;
 }
 
-- (NSString *)timeStringByDate:(NSDate *)date DateFormat:(NSString *)format {
++ (NSString *)timeStringByDate:(NSDate *)date DateFormat:(NSString *)format {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"zh_CN"]];
     [formatter setDateFormat:format];
@@ -35,7 +35,7 @@
     return destDateString;
 }
 
-- (NSString *)getJiYueJiRiByTimeString:(NSString *)time DateFormat:(NSString *)format {
++ (NSString *)getJiYueJiRiByTimeString:(NSString *)time DateFormat:(NSString *)format {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"zh_CN"]];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -47,7 +47,7 @@
     return result;
 }
 
-- (BOOL)isAnotherDay {
++ (BOOL)isAnotherDay {
     BOOL isAnotherDay = YES;
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];

@@ -13,13 +13,13 @@
 /**
  * 获取label的宽度
  */
-- (CGFloat)getLableWidthByStirng:(NSString *)string FontSize:(CGFloat)fontsize;
++ (CGFloat)getLableWidthByStirng:(NSString *)string FontSize:(CGFloat)fontsize;
 
 
 /**
  * 获取label的高度
  */
-- (CGFloat)getLableHeightByStirng:(NSString *)string FontSize:(CGFloat)fontsize
++ (CGFloat)getLableHeightByStirng:(NSString *)string FontSize:(CGFloat)fontsize
                             Width:(CGFloat)width Lines:(NSInteger)lines;
 
 @end

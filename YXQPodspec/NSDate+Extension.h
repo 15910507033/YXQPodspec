@@ -13,26 +13,26 @@
 /**
  * 当前时间字符串
  */
-- (NSString *)currentTimeStringByDateFormat:(NSString *)format;
++ (NSString *)currentTimeStringByDateFormat:(NSString *)format;
 
 /**
  * 根据时间字符串，转化为时间
  */
-- (NSDate *)dateByTimeString:(NSString *)time DateFormat:(NSString *)format;
++ (NSDate *)dateByTimeString:(NSString *)time DateFormat:(NSString *)format;
 
 /**
  * 根据时间，转化为时间字符串
  */
-- (NSString *)timeStringByDate:(NSDate *)date DateFormat:(NSString *)format;
++ (NSString *)timeStringByDate:(NSDate *)date DateFormat:(NSString *)format;
 
 /**
  * 根据时间字符串，得到几月几日
  */
-- (NSString *)getJiYueJiRiByTimeString:(NSString *)time DateFormat:(NSString *)format;
++ (NSString *)getJiYueJiRiByTimeString:(NSString *)time DateFormat:(NSString *)format;
 
 /**
  * 是否已保存的日期已经过去
  */
-- (BOOL)isAnotherDay;
++ (BOOL)isAnotherDay;
 
 @end

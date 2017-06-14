@@ -10,7 +10,7 @@
 
 @implementation UILabel (Extension)
 
-- (CGFloat)getLableWidthByStirng:(NSString *)string FontSize:(CGFloat)fontsize {
++ (CGFloat)getLableWidthByStirng:(NSString *)string FontSize:(CGFloat)fontsize {
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.font = [UIFont systemFontOfSize:fontsize];
     label.text = string;
@@ -19,7 +19,7 @@
 }
 
 
-- (CGFloat)getLableHeightByStirng:(NSString *)string FontSize:(CGFloat)fontsize
++ (CGFloat)getLableHeightByStirng:(NSString *)string FontSize:(CGFloat)fontsize
                             Width:(CGFloat)width Lines:(NSInteger)lines {
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 0)];
     label.font = [UIFont systemFontOfSize:fontsize];

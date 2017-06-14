@@ -13,11 +13,11 @@
 /**
  * 获取等比缩放的高度
  */
-- (CGFloat)heightWithScaleWidth:(CGFloat)scaleWidth OriginSize:(CGSize)originSize;
++ (CGFloat)heightWithScaleWidth:(CGFloat)scaleWidth OriginSize:(CGSize)originSize;
 
 /**
  * 自动计算网络图片尺寸
  */
-- (CGSize)getImageSizeWithURL:(id)imageURL;
++ (CGSize)getImageSizeWithURL:(id)imageURL;
 
 @end

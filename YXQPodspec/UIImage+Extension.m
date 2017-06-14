@@ -11,13 +11,13 @@
 
 @implementation UIImage (Extension)
 
-- (CGFloat)heightWithScaleWidth:(CGFloat)scaleWidth OriginSize:(CGSize)originSize {
++ (CGFloat)heightWithScaleWidth:(CGFloat)scaleWidth OriginSize:(CGSize)originSize {
     float scale = originSize.height/originSize.width;
     return scale*scaleWidth;
 }
 
 
-- (CGSize)getImageSizeWithURL:(id)imageURL {
++ (CGSize)getImageSizeWithURL:(id)imageURL {
     NSURL* URL = nil;
     if([imageURL isKindOfClass:[NSURL class]]){
         URL = imageURL;
@@ -56,7 +56,7 @@
 }
 
 //获取PNG图片的大小
-- (CGSize)getPNGImageSizeWithRequest:(NSMutableURLRequest*)request {
++ (CGSize)getPNGImageSizeWithRequest:(NSMutableURLRequest*)request {
     [request setValue:@"bytes=16-23" forHTTPHeaderField:@"Range"];
     NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     if(data.length == 8)
@@ -79,7 +79,7 @@
 }
 
 //获取gif图片的大小
-- (CGSize)getGIFImageSizeWithRequest:(NSMutableURLRequest*)request {
++ (CGSize)getGIFImageSizeWithRequest:(NSMutableURLRequest*)request {
     [request setValue:@"bytes=6-9" forHTTPHeaderField:@"Range"];
     NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     if(data.length == 4)
@@ -98,7 +98,7 @@
 }
 
 //获取jpg图片的大小
-- (CGSize)getJPGImageSizeWithRequest:(NSMutableURLRequest*)request {
++ (CGSize)getJPGImageSizeWithRequest:(NSMutableURLRequest*)request {
     [request setValue:@"bytes=0-209" forHTTPHeaderField:@"Range"];
     NSData* data = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     
