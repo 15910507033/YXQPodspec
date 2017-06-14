@@ -15,6 +15,7 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.source_files  = 'YXQPodspec/*'
   s.frameworks = 'Foundation', 'CoreGraphics', 'UIKit', 'Security', 'AdSupport', 'SystemConfiguration'
-  s.dependency 'OpenUDID', 'SDWebImage'
+  s.dependency 'OpenUDID'
+  s.dependency 'SDWebImage'
 
 end

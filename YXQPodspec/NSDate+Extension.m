@@ -53,7 +53,7 @@
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"GMT"]];
     NSString *currentTime = [dateFormat stringFromDate:[NSDate date]];
-    NSString *savedTime = [USER_DEFAULTS objectForKey:@"saved_time"];
+    NSString *savedTime = [[NSUserDefaults standardUserDefaults] objectForKey:@"saved_time"];
     if(savedTime.length > 0) {
         NSDate *dateNow  = [dateFormat dateFromString:currentTime];
         NSDate *date = [dateFormat dateFromString:savedTime];
@@ -63,8 +63,8 @@
             isAnotherDay = NO;
         }
     }
-    [USER_DEFAULTS setObject:currentTime forKey:@"saved_time"];
-    [USER_DEFAULTS synchronize];
+    [[NSUserDefaults standardUserDefaults] setObject:currentTime forKey:@"saved_time"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     return isAnotherDay;
 }
 
