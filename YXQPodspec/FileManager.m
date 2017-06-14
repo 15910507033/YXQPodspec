@@ -147,4 +147,21 @@ static FileManager *sharedInstance = nil;
     return [[[self defaultManager].manager attributesOfItemAtPath:path error:nil][NSFileSize] integerValue];
 }
 
++ (void)clearCache {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSString *cachPath = [self cachePath];
+        NSArray *files = [[self defaultManager].manager subpathsAtPath :cachPath];
+        
+        for ( NSString *p in files) {
+            NSError *error;
+            NSString *path = [cachPath stringByAppendingPathComponent :p];
+            if ([[ NSFileManager defaultManager ] fileExistsAtPath :path]) {
+                [[ NSFileManager defaultManager ] removeItemAtPath :path error :&error];
+            }
+        }
+        
+        [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{}];
+    });
+}
+
 @end
