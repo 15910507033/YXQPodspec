@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YXQPodspec"
-  s.version      = "1.0.4"
+  s.version      = "1.0.5"
   s.summary      = "Methods used on iOS."
   s.description  = <<-DESC
                    It is methods used on iOS.
@@ -14,6 +14,6 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '4.3'
   s.requires_arc = true
   s.source_files  = 'YXQPodspec/*'
-  s.frameworks = 'Foundation', 'CoreGraphics', 'UIKit'
+  s.frameworks = 'Foundation', 'CoreGraphics', 'UIKit', 'Security'
 
 end
