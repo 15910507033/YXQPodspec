@@ -239,9 +239,9 @@
     NSString *saved_uuid = [[NSUserDefaults standardUserDefaults] objectForKey:KEY_UUID];
     NSString *saved_idfa = [[NSUserDefaults standardUserDefaults] objectForKey:KEY_IDFA];
     NSString *saved_sourceid = [[NSUserDefaults standardUserDefaults] objectForKey:KEY_SOURCEID];
-    [requestSerializer setValue:saved_uuid forKey:@"uuid"];
-    [requestSerializer setValue:saved_idfa forKey:@"idfa"];
-    [requestSerializer setValue:saved_sourceid forKey:@"Sourceid"];
+    [requestSerializer setValue:saved_uuid forHTTPHeaderField:@"uuid"];
+    [requestSerializer setValue:saved_idfa forHTTPHeaderField:@"idfa"];
+    [requestSerializer setValue:saved_sourceid forHTTPHeaderField:@"Sourceid"];
     
     NSString *time = [NSDate currentTimeStringByDateFormat:@"yyyyMMddHHMMssSSS"];
     NSString *token = [NSString stringWithFormat:@"%@_%@",saved_uuid,time];

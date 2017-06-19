@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YXQPodspec"
-  s.version      = "1.1.7"
+  s.version      = "1.1.8"
   s.summary      = "Methods used on iOS."
   s.description  = <<-DESC
                    It is methods used on iOS.
@@ -20,6 +20,6 @@ Pod::Spec.new do |s|
   s.dependency 'RegexKitLite'
   s.dependency 'AFNetworking'
   s.dependency 'RSAEncryptor'
-  s.dependency 'SBJson'
+  s.dependency 'SBJson', '~> 2.2.3'
 
 end
