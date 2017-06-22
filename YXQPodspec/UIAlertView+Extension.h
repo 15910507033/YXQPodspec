@@ -8,25 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^selectedOtherButtonBlock)(void);
+
 @interface UIAlertView (Extension)
 
 + (void)showWithTitle:(NSString *)title
               Message:(NSString *)message
-                  Tag:(NSInteger)tag
                Target:(id)sender
          CancelButton:(NSString *)cancelButtonTitle
-          OtherButton:(NSString *)otherButtonTitle;
-
-+ (void)showWithMessage:(NSString *)message;
-
-+ (void)showWithMessage:(NSString *)message
-                    Tag:(NSInteger)tag
-                 Target:(id)sender;
+          OtherButton:(NSString *)otherButtonTitle
+       SelectedButton:(selectedOtherButtonBlock)selectedBlock;
 
 + (void)showWithMessage:(NSString *)message
-                    Tag:(NSInteger)tag
                  Target:(id)sender
            CancelButton:(NSString *)cancelButtonTitle
-            OtherButton:(NSString *)otherButtonTitle;
+            OtherButton:(NSString *)otherButtonTitle
+         SelectedButton:(selectedOtherButtonBlock)selectedBlock;
+
++ (void)showWithMessage:(NSString *)message Target:(id)sender;
 
 @end
