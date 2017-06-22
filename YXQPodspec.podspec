@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YXQPodspec"
-  s.version      = "1.2.1"
+  s.version      = "1.2.2"
   s.summary      = "Methods used on iOS."
   s.description  = <<-DESC
                    It is methods used on iOS.
