@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YXQPodspec"
-  s.version      = "1.2.3"
+  s.version      = "1.2.5"
   s.summary      = "Methods used on iOS."
   s.description  = <<-DESC
                    It is methods used on iOS.
@@ -16,6 +16,7 @@ Pod::Spec.new do |s|
   s.source_files  = 'YXQPodspec/*'
   s.frameworks = 'Foundation', 'CoreGraphics', 'UIKit', 'Security', 'AdSupport', 'SystemConfiguration'
   s.dependency 'OpenUDID'
+  s.dependency 'MJRefresh'
   s.dependency 'SDWebImage'
   s.dependency 'RegexKitLite'
   s.dependency 'AFNetworking'

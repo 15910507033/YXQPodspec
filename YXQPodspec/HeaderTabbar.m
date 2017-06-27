@@ -9,8 +9,9 @@
 #import "HeaderTabbar.h"
 #import "HeaderTabCollectionCell.h"
 #import "AppCommonMacro.h"
+#import "UIColor+Hex.h"
 
-static CGFloat const topBarItemMargin = 15; //标题之间的间距
+static CGFloat const topBarItemMargin = 35; //标题之间的间距
 
 @interface HeaderTabbar ()
 <UICollectionViewDataSource,UICollectionViewDelegate>
@@ -18,7 +19,7 @@ static CGFloat const topBarItemMargin = 15; //标题之间的间距
 @property (nonatomic,assign) NSInteger  selectedIndex;
 @property (nonatomic,assign) NSInteger  preSelectedIndex;
 @property (nonatomic,strong) NSMutableArray *titles;
-@property (nonatomic,strong) NSMutableArray *subViewControllers;
+@property (nonatomic,strong) UIView         *keyline;
 @property (nonatomic,weak) UIScrollView     *tabbar;  //头部标题容器
 @property (nonatomic,weak) UICollectionView *contentView;   //内容区
 @end
@@ -46,6 +47,10 @@ static CGFloat const topBarItemMargin = 15; //标题之间的间距
     tabbar.showsVerticalScrollIndicator = NO;
     _tabbar.backgroundColor = [UIColor whiteColor];
     tabbar.bounces = NO;
+    
+    self.keyline = [[UIView alloc] init];
+    self.keyline.backgroundColor = [UIColor hexColor:@"#ececec"];
+    [self addSubview:self.keyline];
     
     UICollectionViewFlowLayout * layout = [[UICollectionViewFlowLayout alloc]init];
     //设置layout 属性
@@ -75,6 +80,7 @@ static CGFloat const topBarItemMargin = 15; //标题之间的间距
     BOOL needFilling = NO;
     CGFloat btnX = topBarItemMargin;
     self.tabbar.frame = CGRectMake(0, 0, rect.size.width, TOPBAR_H);
+    self.keyline.frame = CGRectMake(0, TOPBAR_H-PX(1), rect.size.width, PX(1));
     if(_tabbarWidth < rect.size.width) {
         _tabbarWidth = rect.size.width;
         btnX = 0;
@@ -108,15 +114,18 @@ static CGFloat const topBarItemMargin = 15; //标题之间的间距
 
 //外界传个控制器,添加一个栏目
 - (void)addSubItemWithViewController:(UIViewController *)viewController{
-    UIButton * btn = [[UIButton alloc] init];
+    UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.tabbar addSubview:btn];
     [self.titles addObject:btn];
+    btn.titleLabel.font = [UIFont systemFontOfSize:_titleSelectedFontSize];
+    
     [btn setTitle:viewController.title forState:UIControlStateNormal];
     [btn sizeToFit];
     _tabbarWidth += btn.frame.size.width + topBarItemMargin;
     btn.titleLabel.font = [UIFont systemFontOfSize:_titleNormalFontSize];
     [btn setTitleColor:_titleNormalColor forState:UIControlStateNormal];
     [btn setTitleColor:_titleSelectedColor forState:UIControlStateSelected];
+    
     [btn addTarget:self action:@selector(itemSelected:) forControlEvents:UIControlEventTouchUpInside];
     [self.subViewControllers addObject:viewController];
 }
@@ -154,9 +163,11 @@ static CGFloat const topBarItemMargin = 15; //标题之间的间距
         // 滚动标题滚动条
         [self.tabbar setContentOffset:CGPointMake(offsetX, 0) animated:YES];
     }];
+    //加载数据
+    if([self.delegate respondsToSelector:@selector(loadDataWithIndex:)]) {
+        [self.delegate loadDataWithIndex:index];
+    }
 }
-
-
 
 
 
@@ -181,7 +192,7 @@ static CGFloat const topBarItemMargin = 15; //标题之间的间距
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-     HeaderTabCollectionCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HeaderTabCollectionCell" forIndexPath:indexPath];
+    HeaderTabCollectionCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"HeaderTabCollectionCell" forIndexPath:indexPath];
     cell.subVc = self.subViewControllers[indexPath.row] ;
     return cell;
 }
@@ -208,6 +219,7 @@ static CGFloat const topBarItemMargin = 15; //标题之间的间距
     bottomLine.backgroundColor = lineColor;
     [self addSubview:bottomLine];
     bottomLine.hidden = YES;
+    
 }
 - (void)hideBottomLine {
     UIView *line = [self viewWithTag:10];

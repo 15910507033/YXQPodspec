@@ -10,12 +10,18 @@
 
 #define TOPBAR_H    35
 
+@protocol HeaderTabbarDelegate <NSObject>
+- (void)loadDataWithIndex:(NSInteger)idx;
+@end
+
 @interface HeaderTabbar : UIView
 
 @property (nonatomic) CGFloat titleNormalFontSize;
 @property (nonatomic) CGFloat titleSelectedFontSize;
 @property (nonatomic, strong) UIColor *titleNormalColor;
 @property (nonatomic, strong) UIColor *titleSelectedColor;
+@property (nonatomic, strong) NSMutableArray *subViewControllers;
+@property (nonatomic, weak) id<HeaderTabbarDelegate> delegate;
 
 /**
  *  添加一个子控制器
