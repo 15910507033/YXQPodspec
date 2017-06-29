@@ -7,6 +7,7 @@
 //
 
 #import "UILabel+Extension.h"
+#import "UIColor+Hex.h"
 
 @implementation UILabel (Extension)
 
@@ -27,6 +28,25 @@
     label.numberOfLines = lines;
     [label sizeToFit];
     return label.frame.size.height;
+}
+
++ (UILabel *)labelWithFrame:(CGRect)frame
+                       Text:(NSString *)text
+                  TextColor:(NSString *)colorString
+                       Font:(CGFloat)fontSize {
+    UILabel *label = [[UILabel alloc] init];
+    label.frame = frame;
+    label.text = text;
+    label.textColor = [UIColor hexColor:colorString];
+    label.font = [UIFont systemFontOfSize:fontSize];
+    return label;
+}
+
+- (void)addStricklineWithColor:(NSString *)color Heigh:(CGFloat)height {
+    UIView *view = [[UIView alloc] init];
+    view.frame = CGRectMake(0, self.frame.size.height/2, self.frame.size.width+2, height);
+    view.backgroundColor = [UIColor hexColor:color];
+    [self addSubview:view];
 }
 
 @end
