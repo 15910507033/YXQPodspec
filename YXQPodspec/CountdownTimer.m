@@ -87,10 +87,10 @@ static CountdownTimer *shareInstance = nil;
         self.timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
         dispatch_source_set_timer(self.timer,dispatch_walltime(NULL, 0), 1.0 * NSEC_PER_SEC, 0);
         
-        WEAK_SELF
+        __weak __typeof(self) weakSelf= self;
         dispatch_source_set_event_handler(self.timer, ^{
             dispatch_async(dispatch_get_main_queue(), ^{
-                STRONG_INBLOCK_SELF
+                __strong typeof (weakSelf) strongSelf = weakSelf;
                 for(NSString *flag in self.flagDict.allKeys) {
                     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:self.flagDict[flag]];
                     long timeInterval = [(NSNumber *)userInfo[INTERVAL] longValue];
