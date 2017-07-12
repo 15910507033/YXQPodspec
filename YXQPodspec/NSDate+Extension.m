@@ -38,7 +38,7 @@
 + (NSString *)getJiYueJiRiByTimeString:(NSString *)time DateFormat:(NSString *)format {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"zh_CN"]];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [formatter setDateFormat:format];
     NSDate *date = [formatter dateFromString:time];
     NSCalendar *cal = [NSCalendar currentCalendar];
     unsigned int unitFlags = NSCalendarUnitMonth | NSCalendarUnitDay;

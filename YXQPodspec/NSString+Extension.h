@@ -58,6 +58,17 @@
 - (NSString *)cleanEmoji;
 
 /**
+ *  过滤特殊符号
+ */
+- (NSString *)trimmedString;
+
+/**
+ *  特殊符号过滤后，是否只剩下空字符串
+ *  仅剩空返回yes  还有其他字符串返回no
+ */
+- (BOOL)isTrimmedString;
+
+/**
  * 是否为身份证
  */
 - (BOOL)isIDCard;

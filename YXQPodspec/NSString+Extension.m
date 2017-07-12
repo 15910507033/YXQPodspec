@@ -137,6 +137,20 @@ NSString* const REG_PHONE = @"^(([0\\+]\\d{2,3}-?)?(0\\d{2,3})-?)?(\\d{7,8})";
     return newStr;
 }
 
+- (NSString *)trimmedString {
+    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"@／：；（）¥「」＂、[]{}#%-*+=_\\|~＜＞$€^•'@#$%^&#$%^&amp;*()_+'\""];
+    NSString *trimmedString = [self stringByTrimmingCharactersInSet:set];
+    return trimmedString;
+}
+
+- (BOOL)isTrimmedString {
+    if ([[self trimmedString] isEqualToString:@""] ||
+        [self trimmedString].length == 0) {
+        return YES;
+    }
+    return NO;
+}
+
 - (BOOL)isIDCard {
     NSString *value = [NSString stringWithString:self];
     if([[value substringWithRange:NSMakeRange(value.length-1,1)] isEqualToString:@"x"]){
