@@ -92,6 +92,16 @@ NSString* const REG_PHONE = @"^(([0\\+]\\d{2,3}-?)?(0\\d{2,3})-?)?(\\d{7,8})";
     }
 }
 
+- (NSString *)deleteWhitespaceCharacters {
+    NSCharacterSet *charset = [NSCharacterSet whitespaceCharacterSet];
+    NSArray *charArr = [self componentsSeparatedByCharactersInSet:charset];
+    NSMutableString *nString = [NSMutableString string];
+    for (NSString *s in charArr) {
+        [nString appendString:s];
+    }
+    return nString;
+}
+
 - (BOOL)isContainsEmoji {
     __block BOOL returnself = NO;
     [self enumerateSubstringsInRange:NSMakeRange(0, [self length]) options:NSStringEnumerationByComposedCharacterSequences usingBlock:

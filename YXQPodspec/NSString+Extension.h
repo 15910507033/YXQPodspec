@@ -41,9 +41,14 @@
 - (BOOL)isMobileNum;
 
 /**
- * 是否包含空格
+ * 是否包含空格和空白
  */
 - (BOOL)isTextHaswhitespace;
+
+/**
+ * 删除空白字符
+ */
+- (NSString *)deleteWhitespaceCharacters;
 
 /**
  * 判断是否含有emoji表情
