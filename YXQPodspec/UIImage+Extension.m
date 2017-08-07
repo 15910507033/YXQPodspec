@@ -17,6 +17,7 @@
     UIImage *image = [UIImage imageWithData:data];
     return image;
 }
+ 
 
 + (CGFloat)heightWithScaleWidth:(CGFloat)scaleWidth OriginSize:(CGSize)originSize {
     float scale = originSize.height/originSize.width;

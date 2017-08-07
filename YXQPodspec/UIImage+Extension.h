@@ -13,7 +13,7 @@
 /**
  * 根据url生成图片
  */
-+ (UIImage *)imageWithUrl:(NSString *)imageUrl;
++ (UIImage *)imageWithUrl:(NSString *)imageUrl; 
 
 /**
  * 获取等比缩放的高度
