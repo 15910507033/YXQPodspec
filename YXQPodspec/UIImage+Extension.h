@@ -11,6 +11,11 @@
 @interface UIImage (Extension)
 
 /**
+ * 根据url生成图片
+ */
++ (UIImage *)imageWithUrl:(NSString *)imageUrl;
+
+/**
  * 获取等比缩放的高度
  */
 + (CGFloat)heightWithScaleWidth:(CGFloat)scaleWidth OriginSize:(CGSize)originSize;

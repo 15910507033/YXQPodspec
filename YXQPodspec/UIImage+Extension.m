@@ -11,6 +11,13 @@
 
 @implementation UIImage (Extension)
 
++ (UIImage *)imageWithUrl:(NSString *)imageUrl {
+    NSURL   *url   = [NSURL URLWithString:imageUrl];
+    NSData  *data  = [NSData dataWithContentsOfURL:url];
+    UIImage *image = [UIImage imageWithData:data];
+    return image;
+}
+
 + (CGFloat)heightWithScaleWidth:(CGFloat)scaleWidth OriginSize:(CGSize)originSize {
     float scale = originSize.height/originSize.width;
     return scale*scaleWidth;
