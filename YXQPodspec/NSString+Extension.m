@@ -8,6 +8,7 @@
 
 #import "NSString+Extension.h"
 #import <RegexKitLite/RegexKitLite.h>
+#import <CommonCrypto/CommonDigest.h>
 
 NSString* const REG_EMAIL = @"\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
 NSString* const REG_MOBILE = @"^(14[0-9]|13[0-9]|15[0-9]|17[0-9]|18[0-9])\\d{8}$";
@@ -232,5 +233,18 @@ NSString* const REG_PHONE = @"^(([0\\+]\\d{2,3}-?)?(0\\d{2,3})-?)?(\\d{7,8})";
             return false;
     }
 }
+
+
+- (NSString *)md5Hash {
+    NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5([data bytes], [data length], result);
+    NSString *md5_result =
+    [NSString stringWithFormat:
+     @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+     result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7], result[8], result[9], result[10], result[11], result[12], result[13], result[14], result[15]];
+    return md5_result;
+}
+
 
 @end

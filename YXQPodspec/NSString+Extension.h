@@ -78,4 +78,9 @@
  */
 - (BOOL)isIDCard;
 
+/**
+ * 获取md5Hash
+ */
+- (NSString *)md5Hash;
+
 @end
