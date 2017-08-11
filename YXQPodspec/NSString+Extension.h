@@ -13,7 +13,7 @@
 /**
  * 字符串是否为空
  */
-- (BOOL)isEmpty;
+- (BOOL)isEmptyString;
 
 /**
  * 是否为中文

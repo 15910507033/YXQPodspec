@@ -16,17 +16,11 @@ NSString* const REG_PHONE = @"^(([0\\+]\\d{2,3}-?)?(0\\d{2,3})-?)?(\\d{7,8})";
 
 @implementation NSString (Extension)
 
-- (BOOL)isEmpty {
-    BOOL ret = NO;
-    if(self == nil){
-        ret = YES;
-    } else {
-        NSString *temp = [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-        if([temp length] < 1) {
-            ret=YES;
-        }
+- (BOOL)isEmptyString {
+    if(self && self.length>0) {
+        return NO;
     }
-    return ret;
+    return YES;
 }
 
 - (BOOL)isChineseValue {

@@ -251,21 +251,21 @@
     
     if([[NSUserDefaults standardUserDefaults] objectForKey:@"Userid"]) {
         NSString *userid = [[NSUserDefaults standardUserDefaults] objectForKey:@"Userid"];
-        if(![userid isEmpty]) {
+        if(![userid isEmptyString]) {
             [requestSerializer setValue:userid forHTTPHeaderField:@"Userid"];
         }
     }
     
     if([[NSUserDefaults standardUserDefaults] objectForKey:@"Usersession"]) {
         NSString *userid = [[NSUserDefaults standardUserDefaults] objectForKey:@"Usersession"];
-        if(![userid isEmpty]) {
+        if(![userid isEmptyString]) {
             [requestSerializer setValue:userid forHTTPHeaderField:@"Usersession"];
         }
     }
     
     if([[NSUserDefaults standardUserDefaults] objectForKey:KEY_UNIQUEID]) {
         NSString *uniqueid = [[NSUserDefaults standardUserDefaults] objectForKey:KEY_UNIQUEID];
-        if(![uniqueid isEmpty]) {
+        if(![uniqueid isEmptyString]) {
             [requestSerializer setValue:uniqueid forHTTPHeaderField:@"Unique"];
         }
     }
