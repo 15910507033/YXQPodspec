@@ -9,10 +9,12 @@
 #import <Foundation/Foundation.h>
 
 #pragma mark 全局的 key
-#define KEY_SOURCEID       @"Sourceid"
-#define KEY_UUID           @"uuid"
-#define KEY_IDFA           @"idfa"
-#define KEY_UNIQUEID       @"Unique"
+#define KEY_SOURCEID      @"Sourceid"
+#define KEY_UUID          @"uuid"
+#define KEY_IDFA          @"idfa"
+#define KEY_UNIQUEID      @"Unique"
+#define KEY_USER_ID       @"UserId"
+#define KEY_USER_SESSION  @"UserSession"
 
 @interface RequestManager : NSObject
 

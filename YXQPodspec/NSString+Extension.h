@@ -11,11 +11,6 @@
 @interface NSString (Extension)
 
 /**
- * 字符串是否为空
- */
-- (BOOL)isEmptyString;
-
-/**
  * 是否为中文
  */
 - (BOOL)isChineseValue;

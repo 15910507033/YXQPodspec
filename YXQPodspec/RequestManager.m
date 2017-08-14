@@ -16,7 +16,7 @@
 #import "NSDate+Extension.h"
 
 //请求时间
-#define TIMEOUT_INTERVAL   30
+#define TIMEOUT_INTERVAL  30
 
 //rsa加密
 #define RSA_PULIC_KEY  \
@@ -249,27 +249,26 @@
     [requestSerializer setValue:rsa forHTTPHeaderField:@"token"];
     [requestSerializer setValue:time forHTTPHeaderField:@"random"];
     
-    if([[NSUserDefaults standardUserDefaults] objectForKey:@"Userid"]) {
-        NSString *userid = [[NSUserDefaults standardUserDefaults] objectForKey:@"Userid"];
-        if(![userid isEmptyString]) {
+    if([[NSUserDefaults standardUserDefaults] objectForKey:KEY_USER_ID]) {
+        NSString *userid = [[NSUserDefaults standardUserDefaults] objectForKey:KEY_USER_ID];
+        if(userid && userid.length>0) {
             [requestSerializer setValue:userid forHTTPHeaderField:@"Userid"];
         }
     }
     
-    if([[NSUserDefaults standardUserDefaults] objectForKey:@"Usersession"]) {
-        NSString *userid = [[NSUserDefaults standardUserDefaults] objectForKey:@"Usersession"];
-        if(![userid isEmptyString]) {
-            [requestSerializer setValue:userid forHTTPHeaderField:@"Usersession"];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:KEY_USER_SESSION]) {
+        NSString *usersession = [[NSUserDefaults standardUserDefaults] objectForKey:KEY_USER_SESSION];
+        if(usersession && usersession.length>0) {
+            [requestSerializer setValue:usersession forHTTPHeaderField:@"Usersession"];
         }
     }
     
     if([[NSUserDefaults standardUserDefaults] objectForKey:KEY_UNIQUEID]) {
         NSString *uniqueid = [[NSUserDefaults standardUserDefaults] objectForKey:KEY_UNIQUEID];
-        if(![uniqueid isEmptyString]) {
+        if(uniqueid && uniqueid.length>0) {
             [requestSerializer setValue:uniqueid forHTTPHeaderField:@"Unique"];
         }
     }
 }
-
 
 @end
