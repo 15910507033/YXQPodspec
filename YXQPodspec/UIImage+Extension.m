@@ -24,6 +24,14 @@
     return scale*scaleWidth;
 }
 
++ (UIImage *)makeImageWithView:(UIView *)view {
+    CGSize size = view.bounds.size;
+    UIGraphicsBeginImageContextWithOptions(size, YES, [UIScreen mainScreen].scale);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
 
 + (CGSize)getImageSizeWithURL:(id)imageURL {
     NSURL* URL = nil;

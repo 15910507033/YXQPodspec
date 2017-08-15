@@ -13,7 +13,7 @@
 /**
  * 根据url生成图片
  */
-+ (UIImage *)imageWithUrl:(NSString *)imageUrl; 
++ (UIImage *)imageWithUrl:(NSString *)imageUrl;
 
 /**
  * 获取等比缩放的高度
@@ -24,5 +24,10 @@
  * 自动计算网络图片尺寸
  */
 + (CGSize)getImageSizeWithURL:(id)imageURL;
+
+/**
+ * 根据视图生成图片
+ */
++ (UIImage *)makeImageWithView:(UIView *)view;
 
 @end
