@@ -165,4 +165,24 @@ static FileManager *sharedInstance = nil;
     });
 }
 
++ (CGFloat)sizeOfCachePath {
+    NSString *path = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSFileManager *file_manager = [NSFileManager defaultManager];
+    if([file_manager fileExistsAtPath:path]) {
+        NSEnumerator *childFilesEnumerator = [[file_manager subpathsAtPath:path] objectEnumerator];
+        long long folderSize = 0;
+        NSString *fileName = @"";
+        while ((fileName = [childFilesEnumerator nextObject]) != nil){
+            NSString* fileAbsolutePath = [path stringByAppendingPathComponent:fileName];
+            if ([file_manager fileExistsAtPath:fileAbsolutePath]){
+                folderSize += [[file_manager attributesOfItemAtPath:fileAbsolutePath error:nil] fileSize];
+            }else {
+                folderSize += 0;
+            }
+        }
+        return folderSize/(1024.0*1024.0);
+    }
+    return 0;
+}
+
 @end

@@ -57,4 +57,7 @@
 #pragma mark - 清理缓存
 + (void)clearCache;
 
+#pragma mark - 缓存的大小
++ (CGFloat)sizeOfCachePath;
+
 @end
