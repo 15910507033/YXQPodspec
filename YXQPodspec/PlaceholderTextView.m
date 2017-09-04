@@ -7,6 +7,7 @@
 //
 
 #import "PlaceholderTextView.h"
+#import "UIView+Extension.h"
 #import "UIColor+Hex.h"
 
 @interface PlaceholderTextView ()
