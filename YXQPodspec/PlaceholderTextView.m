@@ -7,6 +7,7 @@
 //
 
 #import "PlaceholderTextView.h"
+#import "UIColor+Hex.h"
 
 @interface PlaceholderTextView ()
 @property (nonatomic, strong) UILabel *placeholderLabel;
